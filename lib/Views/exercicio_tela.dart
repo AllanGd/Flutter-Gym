@@ -47,6 +47,7 @@ class ExercicioTela extends StatelessWidget {
                         debugPrint("Elevated Button clicado");
                       },
                       child: const Text("Enviar foto"),),
+                      ElevatedButton(onPressed: (){}, child: const Text("Apagar foto"))
                 ],
               ),
             ),
