@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:myapp/Models/exercicio_modelo.dart';
 import 'package:myapp/Models/sentimento_modelo.dart';
+import 'package:myapp/_common/minhas_cores.dart';
 
 class ExercicioTela extends StatelessWidget {
   ExercicioTela({super.key});
@@ -21,7 +22,7 @@ class ExercicioTela extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.blue,
+      backgroundColor: MinhasCores.azulPrimario,
       appBar: AppBar(
         title: Text("${exercicioModelo.nome} - ${exercicioModelo.treino}"),
       ),

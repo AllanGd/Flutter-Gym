@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:myapp/Views/autenticacao_tela.dart';
 import 'package:myapp/Views/exercicio_tela.dart';
 
 void main() {
@@ -17,7 +18,7 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.lightBlue),
         useMaterial3: true,
       ),
-      home: ExercicioTela(),
+      home: const AutenticacaoTela(),
     );
   }
 }
