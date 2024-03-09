@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:myapp/_common/minhas_cores.dart';
+import 'package:myapp/componentes/decoracao_campo_autenticacao.dart';
 
 class AutenticacaoTela extends StatefulWidget {
   const AutenticacaoTela({super.key});
@@ -28,7 +29,7 @@ class _AutenticacaoTelaState extends State<AutenticacaoTela> {
                   ])),
             ),
             Padding(
-              padding: const EdgeInsets.all(16.0),
+              padding: const EdgeInsets.fromLTRB(16, 64, 16, 0),
               child: Form(
                 child: SingleChildScrollView(
                   child: Column(
@@ -36,49 +37,69 @@ class _AutenticacaoTelaState extends State<AutenticacaoTela> {
                     crossAxisAlignment: CrossAxisAlignment.stretch,
                     children: [
                       Image.asset(
-                        "assets/logo.png",
+                        "assets/logo FitForge.webp",
                         height: 128,
                       ),
                       const Text(
-                        "Flutter Gym",
+                        "FitForge",
                         textAlign: TextAlign.center,
                         style: TextStyle(
                             fontSize: 48,
                             fontWeight: FontWeight.bold,
-                            color: Colors.white),
+                            color: Colors.orange),
                       ),
                       const SizedBox(
                         height: 32,
                       ),
                       TextFormField(
-                        decoration: const InputDecoration(label: Text("E-mail")),
+                        decoration: getAuthenticationInputDecoration("E-mail"),
+                      ),
+                      const SizedBox(
+                        height: 8,
                       ),
                       TextFormField(
-                        decoration: const InputDecoration(label: Text("Senha")),
+                        decoration: getAuthenticationInputDecoration("Senha"),
                         obscureText: true,
                       ),
-                      Visibility(visible: !queroEntrar, child: Column(children: [
-                        TextFormField(
-                        decoration: const InputDecoration(label: Text("Confirme senha")),
-                        obscureText: true,
+                      const SizedBox(
+                        height: 8,
                       ),
-                      TextFormField(
-                        decoration: const InputDecoration(label: Text("Nome")),
-                      ),
-                      ],)),
+                      Visibility(
+                          visible: !queroEntrar,
+                          child: Column(
+                            children: [
+                              TextFormField(
+                                decoration: getAuthenticationInputDecoration(
+                                    "Confirme senha"),
+                                obscureText: true,
+                              ),
+                              const SizedBox(
+                                height: 8,
+                              ),
+                              TextFormField(
+                                decoration:
+                                    getAuthenticationInputDecoration("Nome"),
+                              ),
+                            ],
+                          )),
                       const SizedBox(
                         height: 16,
                       ),
                       ElevatedButton(
-                          onPressed: () {}, child: Text((queroEntrar)?"Entrar":"Cadastrar")),
-                      const SizedBox(height: 16,),
+                          onPressed: () {},
+                          child: Text((queroEntrar) ? "Entrar" : "Cadastrar")),
+                      const SizedBox(
+                        height: 16,
+                      ),
                       TextButton(
                           onPressed: () {
                             setState(() {
                               queroEntrar = !queroEntrar;
                             });
                           },
-                          child: Text((queroEntrar)?"Não tem cota? Cadastre-se": "Já tem uma conta? Entre!")),
+                          child: Text((queroEntrar)
+                              ? "Não tem cota? Cadastre-se"
+                              : "Já tem uma conta? Entre!")),
                     ],
                   ),
                 ),
