@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:myapp/_common/meu_snackBar.dart';
 import 'package:myapp/_common/minhas_cores.dart';
 import 'package:myapp/componentes/decoracao_campo_autenticacao.dart';
-import 'package:myapp/servicos/autentucacao_servico.dart';
+import 'package:myapp/servicos/autenticacao_servico.dart';
 
 class AutenticacaoTela extends StatefulWidget {
   const AutenticacaoTela({super.key});
@@ -158,6 +158,13 @@ class _AutenticacaoTelaState extends State<AutenticacaoTela> {
     if (_formKey.currentState!.validate()) {
       if (queroEntrar) {
         debugPrint("Entrada validada");
+        _autenticacaoServico
+            .logarUsuarios(email: email, senha: senha)
+            .then((String? erro) {
+          if (erro != null) {
+            mostrarSnackBar(context: context, texto: erro);
+          }
+        });
       } else {
         debugPrint("cadastro validado");
         debugPrint(
@@ -168,12 +175,6 @@ class _AutenticacaoTelaState extends State<AutenticacaoTela> {
           if (erro != null) {
             // Voltou com erro
             mostrarSnackBar(context: context, texto: erro);
-          } else {
-            // Deu certo
-            mostrarSnackBar(
-                context: context,
-                texto: "Cadastro efetuado com sucesso",
-                isErro: false);
           }
         });
       }
